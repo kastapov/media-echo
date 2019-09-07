@@ -1,27 +1,29 @@
 <div class="container">
-  <form id="form">
+  <form id="form" *ngIf="open">
     <h2>Check Credibility for:</h2>
     <ul>
       <li (click)="filter('website')">
-        <input type="checkbox" id="website">
+        <input type="checkbox" id="website" [checked]="includes('website')">
         <label for="website">Website</label>
       </li>
-      <li (click)="filter('image')">
-        <input type="checkbox" id="image">
-        <label for="image">Image</label>
-      </li>
       <li (click)="filter('title')">
-        <input type="checkbox" id="title">
+        <input type="checkbox" id="title" [checked]="includes('title')">
         <label for="title">Title</label>
       </li>
       <li (click)="filter('twitter')">
-        <input type="checkbox" id="twitter">
+        <input type="checkbox" id="twitter" [checked]="includes('twitter')">
         <label for="twitter">Twitter</label>
       </li>
     </ul>
     <button id="btn-main" (click)=send() class="btn-main">Seek the truth</button>
   </form>
   <main>
-    
+    <section *ngIf="data.website" class="website">
+      <h3>Website check</h3>
+      <div class="chart">
+        <span [ngStyle]="{ 'width': data.website.percent }"></span>
+        <p>{{ data.website.percent }}</p>
+      </div>
+    </section>
   </main>
 </div>

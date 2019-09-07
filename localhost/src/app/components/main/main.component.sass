@@ -21,7 +21,6 @@ li
     color: rgb(29, 161, 242)
   
   label 
-    font-weight: bold
     margin-left: 15px
     color: inherit
     cursor: pointer
@@ -30,9 +29,12 @@ h2
   margin-bottom: 10px
   color: rgb(29, 161, 242)
 
+h3 
+  margin-bottom: 10px
+
 .btn-main 
   cursor: pointer
-  margin: 20px 0
+  margin: 10px 0 20px
   background: rgb(29, 161, 242)
   font-weight: bold
   color: white
@@ -41,3 +43,21 @@ h2
   width: 100%
   &:hover
     opacity: .8
+
+.chart 
+  width: 100%
+  height: 20px
+  border: 2px solid grey
+  position: relative
+
+.chart span
+  display: block
+  background: #8581bf
+  height: 100%
+
+.chart p
+  font-weight: bold
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translate(-50%,-50%)

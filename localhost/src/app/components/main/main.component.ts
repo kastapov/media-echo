@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {GoogleSearchService} from '../../services/google-search.service';
+import { BlacklistService } from 'src/app/services/blacklist.service';
 
 @Component({
   selector: 'app-main',
@@ -8,16 +9,29 @@ import {GoogleSearchService} from '../../services/google-search.service';
 })
 export class MainComponent implements OnInit {
   
+  open = true;
   checbbox = [];
   query = '';
+  data = {
+    website: null,
+    title: null,
+    twitter: null,
+  };
 
-  constructor(private googleSearchService: GoogleSearchService) { }
+  constructor(
+    private googleSearchService: GoogleSearchService,
+    private blackListService: BlacklistService
+  ) { }
 
   ngOnInit() {
+    this.data.website  = {
+      percent: '90%'
+    }
+    this.blackListService.checkDomain()
   }
 
-  searchImages() {
-    this.googleSearchService.getImages(this.query);
+  searchImages(x) {
+    this.googleSearchService.getImages(x);
   }
 
   filter(x) {
@@ -29,8 +43,12 @@ export class MainComponent implements OnInit {
     }
   }
 
+  includes(x) {
+    return this.checbbox.includes(x)
+  }
+
   send() {
-    
+    this.open = false;
   }
 
 }
