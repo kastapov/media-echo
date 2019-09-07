@@ -39,7 +39,7 @@
     <button id="btn-main" (click)=seek() class="btn-main">Seek the truth</button>
   </form>
   <main>
-    <section *ngIf="googleSearchService.articles.length > 0 && checkTitle" class="website">
+    <section *ngIf="googleSearchService.articles && googleSearchService.articles.length > 0 && checkTitle" class="website">
       <h2>Title check</h2>
       <ul>
         <li *ngFor="let article of googleSearchService.articles; let i = index">
@@ -58,7 +58,7 @@
         </li>
       </ul>
     </section>
-    <section *ngIf="googleSearchService.images.length > 0 && checkImage" class="website">
+    <section *ngIf="googleSearchService.images && googleSearchService.images.length > 0 && checkImage" class="website">
       <h2>Image check</h2>
       <ul>
         <li *ngFor="let image of googleSearchService.images; let i = index">
