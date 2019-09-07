@@ -25,8 +25,8 @@ export class MainComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const urlParams = new URLSearchParams(window.location.search);
-    if (this.blackListService.checkDomain(urlParams.get('url'))) {
+    const urlParams = new URLSearchParams(window.location.search).get('url');
+    if (this.blackListService.checkDomain(urlParams || '')) {
       this.warning = true;
     }
     this.data.website  = {

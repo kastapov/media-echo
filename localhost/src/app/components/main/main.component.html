@@ -1,17 +1,16 @@
-<div class="container">
+<div class="startOn inline" (click)="startOn = !startOn">
+  <div *ngIf="startOn" class="inline">
+    <img src="assets/toggle-on.png" alt="">
+    <p>On</p>
+  </div>
+  <div *ngIf="!startOn" class="inline">
+    <img src="assets/toggle-off.png" alt="">
+    <p>Off</p>
+  </div>
+</div>
+<div class="container" *ngIf="startOn">
   <div *ngIf="warning" class="warning">
     <h2>WARNING!!! This article is on blacklist</h2>
-  </div>
-  <div class="startOn inline" (click)="startOn = !startOn">
-    <p>Media echo</p>
-    <div *ngIf="startOn" class="inline">
-      <img src="assets/toggle-on.png" alt="">
-      <p>On</p>
-    </div>
-    <div *ngIf="!startOn" class="inline">
-      <img src="assets/toggle-off.png" alt="">
-      <p>Off</p>
-    </div>
   </div>
   <form id="form" *ngIf="open">
     <h2>Check Credibility for:</h2>
@@ -46,15 +45,20 @@
             <img src="{{ article.image }}" alt="neco">
             <div>
               <a href="{{ article.link }}">{{ article.title }}</a>
-              <p>{{ article.displayLink }}</p>
             </div>
+            <img class="graph" src="assets/89.png" alt="neco">
           </div>
-          <!-- <div class="chart">
-            <span [ngStyle]="{ 'width': data.website.percent }"></span>
-            <p>{{ data.website.percent }}</p>
-          </div> -->
+          <div class="meta-data">
+            <span>12.8.2019</span>
+            <span>Johny white</span>
+            <span>{{ article.displayLink }}</span>
+          </div>
+          <div></div>
         </li>
       </ul>
+    </section>
+    <section *ngIf="data.image" class="image">
+      <h2>Image Check</h2>
     </section>
   </main>
 </div>
