@@ -11,26 +11,27 @@
 </div>
 <div class="container" *ngIf="startOn">
   <div *ngIf="warning" class="warning">
+    <div class="info-banner"></div>
     <h2>WARNING!!! This article is on blacklist</h2>
   </div>
   <form id="form" *ngIf="open">
     <h2>Check Credibility for:</h2>
     <ul>
       <p>Website</p>
-      <li (click)="filter('image')">
+      <li>
         <input type="checkbox" [checked]="checkImage">
         <label for="title">Image</label>
       </li>
-      <li (click)="filter('title')">
+      <li>
         <input type="checkbox" [checked]="checkTitle">
         <label for="title">Title</label>
       </li>
-      <li (click)="filter('content')">
+      <li>
         <input type="checkbox">
         <label for="title">Content Text</label>
       </li>
       <p>Social</p>
-      <li (click)="filter('Twitter')">
+      <li>
         <input type="checkbox">
         <label for="title">Twitter</label>
       </li>
