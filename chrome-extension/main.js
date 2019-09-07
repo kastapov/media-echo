@@ -7,7 +7,7 @@ chrome.runtime.onMessage.addListener(function(msg, sender){
 url = location.href
 
 const iframe = document.createElement('iframe');
-iframe.src = `https://bb2b8256.ngrok.io?url=${url}`;
+iframe.src = `https://e7719eb0.ngrok.io?url=${url}`;
 iframe.id = 'media-echo';
 iframe.style = `
 right: 0;

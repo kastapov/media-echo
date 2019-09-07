@@ -15,7 +15,7 @@ export class MainComponent implements OnInit {
   ]
   warning = false;
   open = true;
-  checbbox = [];
+  checbbox = ['content','title','image'];
   query = '';
   startOn = true;
   data = {
