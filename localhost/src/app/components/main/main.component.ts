@@ -31,22 +31,15 @@ export class MainComponent implements OnInit {
 
   }
 
-  searchImages(x) {
-    this.googleSearchService.getImages(x);
-  }
-
   seek() {
     this.open = false;
     this.pageExtractorService.processCrawl().then(() => {
+      const url = this.pageExtractorService.targetUrl;
+      const domain = this.blackListService.getDomain(url);
       this.warning = this.blackListService.checkDomainBlacklisted(this.pageExtractorService.targetUrl);
-      this.googleSearchService.getArticles(this.pageExtractorService.title);
-      this.googleSearchService.getImages(this.pageExtractorService.imageUrl);
+      this.googleSearchService.getArticles(this.pageExtractorService.title, domain);
+      this.googleSearchService.getImages(this.pageExtractorService.imageUrl, domain);
     });
-  }
-
-  randomDate() { 
-    const number = Math.floor(Math.random() * 8); 
-    return this.dates[number]
   }
 }
 

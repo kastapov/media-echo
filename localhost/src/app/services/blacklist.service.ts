@@ -15,7 +15,7 @@ export class BlacklistService {
 
 
 
-  private getDomain(url, subdomain = false) {
+  public getDomain(url, subdomain = false) {
     url = url.replace(/(https?:\/\/)?(www.)?/i, '');
 
     if (!subdomain) {

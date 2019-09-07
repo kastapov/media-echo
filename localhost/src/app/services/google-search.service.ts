@@ -18,16 +18,16 @@ export class GoogleSearchService {
   constructor(private http: HttpClient) {
   }
 
-  getImages(query: string) {
-    return this.http.get(`https://www.googleapis.com/customsearch/v1?key=${this.apiKey}&cx=${this.cx}&q=${query}&searchType=image&num=8&alt=json`)
+  getImages(query: string, domainToExclude: string) {
+    return this.http.get(`https://www.googleapis.com/customsearch/v1?key=${this.apiKey}&cx=${this.cx}&q=${query}&excludeTerms=${domainToExclude}&searchType=image&num=8&alt=json`)
       .subscribe(response => {
         const customSearchResponse = response as ImageResponse;
         this.images = customSearchResponse.items;
       });
   }
 
-  getArticles(query: string) {
-    return this.http.get(`https://www.googleapis.com/customsearch/v1?key=${this.apiKey}&cx=${this.cx}&q=${query}&num=8&alt=json`)
+  getArticles(query: string, domainToExclude: string) {
+    return this.http.get(`https://www.googleapis.com/customsearch/v1?key=${this.apiKey}&cx=${this.cx}&q=${query}&excludeTerms=${domainToExclude}&num=8&alt=json`)
       .subscribe(response => {
         const customSearchResponse = response as ArticleResponse;
         this.articles = customSearchResponse.items;
