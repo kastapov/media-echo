@@ -34,31 +34,31 @@
         <label for="title">Twitter</label>
       </li>
     </ul>
-    <button id="btn-main" (click)=send() class="btn-main">Seek the truth</button>
+    <button id="btn-main" (click)=seek() class="btn-main">Seek the truth</button>
   </form>
-  <main>
-    <section *ngIf="data.website" class="website">
-      <h2>Website check</h2>
-      <ul>
-        <li *ngFor="let article of data.website.articles">
-          <div class="left">
-            <img src="{{ article.image }}" alt="neco">
-            <div>
-              <a href="{{ article.link }}">{{ article.title }}</a>
-            </div>
-            <img class="graph" src="assets/89.png" alt="neco">
-          </div>
-          <div class="meta-data">
-            <span>12.8.2019</span>
-            <span>Johny white</span>
-            <span>{{ article.displayLink }}</span>
-          </div>
-          <div></div>
-        </li>
-      </ul>
-    </section>
-    <section *ngIf="data.image" class="image">
-      <h2>Image Check</h2>
-    </section>
-  </main>
+<!--  <main>-->
+<!--    <section *ngIf="googleSearchService.articles.length > 0" class="website">-->
+<!--      <h2>Website check</h2>-->
+<!--      <ul>-->
+<!--        <li *ngFor="let article of googleSearchService.articles">-->
+<!--          <div class="left">-->
+<!--            <img src="{{ article.pagemap }}" alt="neco">-->
+<!--            <div>-->
+<!--              <a href="{{ article.link }}">{{ article.title }}</a>-->
+<!--            </div>-->
+<!--            <img class="graph" src="assets/89.png" alt="neco">-->
+<!--          </div>-->
+<!--          <div class="meta-data">-->
+<!--            <span>12.8.2019</span>-->
+<!--            <span>Johny white</span>-->
+<!--            <span>{{ article.displayLink }}</span>-->
+<!--          </div>-->
+<!--          <div></div>-->
+<!--        </li>-->
+<!--      </ul>-->
+<!--    </section>-->
+<!--    <section *ngIf="data.image" class="image">-->
+<!--      <h2>Image Check</h2>-->
+<!--    </section>-->
+<!--  </main>-->
 </div>

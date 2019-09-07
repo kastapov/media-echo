@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {GoogleSearchService} from './google-search.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PageExtractorService {
 
-  constructor(private http: HttpClient, private googleSearchService: GoogleSearchService) { }
+  constructor(private http: HttpClient) { }
   public targetUrl: string;
   public imageUrl: string;
   public title: string;
@@ -15,8 +14,10 @@ export class PageExtractorService {
   private pageDom: Document;
 
   public processCrawl() {
-    this.extractUrlToCrawl();
-    this.getPageContents();
+    return new Promise(resolve => {
+      this.extractUrlToCrawl();
+      this.getPageContents(resolve);
+    });
   }
 
   private extractTitle() {
@@ -33,11 +34,12 @@ export class PageExtractorService {
     }
   }
 
-  private getPageContents() {
+  private getPageContents(resolve) {
     this.http.get(this.targetUrl, {responseType: 'text'}).subscribe(response => {
       // @ts-ignore
       this.pageSource = response;
       this.parseDomContents();
+      resolve();
     });
   }
 

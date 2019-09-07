@@ -8,9 +8,9 @@ export class BlacklistService {
 
   constructor() { }
 
-  public checkDomain(url) {
+  public checkDomainBlacklisted(url) {
     const domain = this.getDomain(url);
-    return blacklist.find(d => d.name === domain);
+    return !!blacklist.find(d => d.name === domain);
   }
 
 

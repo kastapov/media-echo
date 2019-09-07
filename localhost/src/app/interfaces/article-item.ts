@@ -1,13 +1,13 @@
-import {Image} from './image';
-
-export interface Kind {
+export interface ArticleItem {
+  cacheId: string;
   displayLink: string;
+  formattedUrl: string;
+  htmlFormattedUrl: string;
   htmlSnippet: string;
   htmlTitle: string;
-  image: Image;
   kind: string;
   link: string;
-  mime: string;
+  pagemap: Array<any>;
   snippet: string;
   title: string;
 }

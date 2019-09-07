@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {GoogleSearchService} from '../../services/google-search.service';
 import { BlacklistService } from 'src/app/services/blacklist.service';
+import {PageExtractorService} from '../../services/page-extractor.service';
+import {ArticleItem} from '../../interfaces/article-item';
 
 @Component({
   selector: 'app-main',
@@ -14,31 +16,22 @@ export class MainComponent implements OnInit {
   query = '';
   startOn = true;
   data = {
-    website: null,
     title: null,
     twitter: null,
   };
+  articles: Array<ArticleItem> = [];
+  percentage = [91, 87, 73, 60, 58, 55, 41, 40];
 
   constructor(
     private googleSearchService: GoogleSearchService,
     private blackListService: BlacklistService,
+    private pageExtractorService: PageExtractorService
   ) { }
 
   ngOnInit() {
-    const urlParams = new URLSearchParams(window.location.search).get('url');
-    if (this.blackListService.checkDomain(urlParams || '')) {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (this.blackListService.checkDomainBlacklisted(urlParams.get('url'))) {
       this.warning = true;
-    }
-    this.data.website  = {
-      percent: '90%',
-      articles: [
-        {
-          title: 'necosdsadadasdd asd asdad asd ads',
-          link: 'sadsadsadasdasdsadasddsaasdd',
-          image: 'https://static01.nyt.com/images/2019/09/07/world/06hkecon1-print/merlin_159784731_ac63cf91-d398-4bc5-9718-2d00178aa902-articleLarge.jpg?quality=75&auto=webp&disable=upscale',
-          displayLink: 'adsadadsda'
-        }
-      ]
     }
   }
 
@@ -49,18 +42,23 @@ export class MainComponent implements OnInit {
   filter(x) {
     const index = this.checbbox.indexOf(x);
     if (index >= 0) {
-      return this.checbbox.splice(index,1)
+      return this.checbbox.splice(index, 1);
     } else {
-      return this.checbbox.push(x)
+      return this.checbbox.push(x);
     }
   }
 
   includes(x) {
-    return this.checbbox.includes(x)
+    return this.checbbox.includes(x);
   }
 
-  send() {
+  seek() {
     this.open = false;
+    this.pageExtractorService.processCrawl().then(() => {
+      this.warning = this.blackListService.checkDomainBlacklisted(this.pageExtractorService.targetUrl);
+      this.googleSearchService.getArticles(this.pageExtractorService.title);
+      this.googleSearchService.getImages(this.pageExtractorService.imageUrl);
+    });
   }
 
 }
