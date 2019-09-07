@@ -6,13 +6,13 @@ import {GoogleSearchService} from './google-search.service';
   providedIn: 'root'
 })
 export class PageExtractorService {
+
+  constructor(private http: HttpClient, private googleSearchService: GoogleSearchService) { }
   public targetUrl: string;
   public imageUrl: string;
   public title: string;
   private pageSource: string;
   private pageDom: Document;
-
-  constructor(private http: HttpClient, private googleSearchService: GoogleSearchService) { }
 
   public processCrawl() {
     this.extractUrlToCrawl();
@@ -22,11 +22,7 @@ export class PageExtractorService {
   private extractTitle() {
     const titleDom = this.pageDom.getElementsByTagName('title');
     // @ts-ignore
-    this.title = titleDom.value;
-  }
-
-  private extractImage() {
-
+    this.title = titleDom[0].innerHTML;
   }
 
   private extractUrlToCrawl() {
@@ -38,7 +34,7 @@ export class PageExtractorService {
   }
 
   private getPageContents() {
-    this.http.get(this.targetUrl).subscribe(response => {
+    this.http.get(this.targetUrl, {responseType: 'text'}).subscribe(response => {
       // @ts-ignore
       this.pageSource = response;
       this.parseDomContents();
@@ -49,5 +45,17 @@ export class PageExtractorService {
     const parser = new DOMParser();
     this.pageDom =  parser.parseFromString(this.pageSource, 'text/html');
     this.extractTitle();
+    this.imageUrl = this.getFirstImage();
+  }
+
+  private getFirstImage() {
+    const images = Array.from(this.pageDom.getElementsByTagName('img'));
+    for (const image of images) {
+      const width = image.getAttribute('width');
+      const height = image.getAttribute('height');
+      if (width  && height) {
+        return image.getAttribute('src');
+      }
+    }
   }
 }
