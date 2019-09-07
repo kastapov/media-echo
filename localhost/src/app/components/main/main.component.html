@@ -18,28 +18,28 @@
     <ul>
       <p>Website</p>
       <li (click)="filter('image')">
-        <input type="checkbox" id="title" [checked]="includes('image')">
+        <input type="checkbox" [checked]="checkImage">
         <label for="title">Image</label>
       </li>
       <li (click)="filter('title')">
-        <input type="checkbox" id="title" [checked]="includes('title')">
+        <input type="checkbox" [checked]="checkTitle">
         <label for="title">Title</label>
       </li>
       <li (click)="filter('content')">
-        <input type="checkbox" id="title" [checked]="includes('content')">
+        <input type="checkbox">
         <label for="title">Content Text</label>
       </li>
       <p>Social</p>
       <li (click)="filter('Twitter')">
-        <input type="checkbox" id="title" [checked]="includes('Twitter')">
+        <input type="checkbox">
         <label for="title">Twitter</label>
       </li>
     </ul>
     <button id="btn-main" (click)=seek() class="btn-main">Seek the truth</button>
   </form>
   <main>
-    <section *ngIf="googleSearchService.articles.length > 0" class="website">
-      <h2>Website check</h2>
+    <section *ngIf="googleSearchService.articles.length > 0 && checkTitle" class="website">
+      <h2>Title check</h2>
       <ul>
         <li *ngFor="let article of googleSearchService.articles; let i = index">
           <div class="left">
@@ -57,7 +57,7 @@
         </li>
       </ul>
     </section>
-    <section *ngIf="googleSearchService.images.length > 0" class="website">
+    <section *ngIf="googleSearchService.images.length > 0 && checkImage" class="website">
       <h2>Image check</h2>
       <ul>
         <li *ngFor="let image of googleSearchService.images; let i = index">
