@@ -10,8 +10,8 @@ import {ArticleItem} from '../interfaces/article-item';
   providedIn: 'root'
 })
 export class GoogleSearchService {
-  private apiKey = 'AIzaSyC3zVqbXZiCV_kBfE6QUj0AoeYKW4gUsKk';
-  private cx = '000139076892268867619:b0ib82xeeen';
+  private apiKey = 'AIzaSyArdPCDEzUcmpNUcnJkaNHYp5CbdvZJ7as';
+  private cx = '012156150781488256618:iipuzjzzjex';
   public images: Array<ImageKind> = [];
   public articles: Array<ArticleItem> = [];
 
