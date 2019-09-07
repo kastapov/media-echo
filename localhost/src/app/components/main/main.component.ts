@@ -10,6 +10,9 @@ import {ArticleItem} from '../../interfaces/article-item';
   styleUrls: ['./main.component.sass']
 })
 export class MainComponent implements OnInit {
+  dates = [
+    '23.2.2019','1.6.2019','14.3.2019','9.8.2019','10.8.2019','3.5.2019','26.4.2019','8.9.2019','29.5.2019'
+  ]
   warning = false;
   open = true;
   checbbox = [];
@@ -58,4 +61,9 @@ export class MainComponent implements OnInit {
     });
   }
 
+  randomDate() { 
+    const number = Math.floor(Math.random() * 8); 
+    return this.dates[number]
+  }
 }
+
