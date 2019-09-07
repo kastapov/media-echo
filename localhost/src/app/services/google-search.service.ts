@@ -19,7 +19,7 @@ export class GoogleSearchService {
   }
 
   getImages(query: string) {
-    return this.http.get(`https://www.googleapis.com/customsearch/v1?key=${this.apiKey}&cx=${this.cx}&q=${query}&excludeTerms=aeronet;ac24;svetkolemnas;zvedavec.org&searchType=image&num=8&alt=json`)
+    return this.http.get(`https://www.googleapis.com/customsearch/v1?key=${this.apiKey}&cx=${this.cx}&q=${query}&searchType=image&num=8&alt=json`)
       .subscribe(response => {
         const customSearchResponse = response as ImageResponse;
         this.images = customSearchResponse.items;
@@ -27,7 +27,7 @@ export class GoogleSearchService {
   }
 
   getArticles(query: string) {
-    return this.http.get(`https://www.googleapis.com/customsearch/v1?key=${this.apiKey}&cx=${this.cx}&q=${query}&excludeTerms=aeronet;ac24;svetkolemnas;zvedavec.org&num=8&alt=json`)
+    return this.http.get(`https://www.googleapis.com/customsearch/v1?key=${this.apiKey}&cx=${this.cx}&q=${query}&num=8&alt=json`)
       .subscribe(response => {
         const customSearchResponse = response as ArticleResponse;
         this.articles = customSearchResponse.items;

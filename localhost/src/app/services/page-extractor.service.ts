@@ -52,19 +52,11 @@ export class PageExtractorService {
 
   private getFirstImage() {
     const images = Array.from(this.pageDom.getElementsByTagName('img'));
-    let imageCandidate = null;
     for (const image of images) {
       const width = image.getAttribute('width');
       const height = image.getAttribute('height');
-      if (width && height) {
-        if (imageCandidate) {
-          if (imageCandidate.getAttribute('height') < image.getAttribute('height')) {
-            imageCandidate = image;
-          }
-        } else {
-          imageCandidate = image;
-        }
-        return imageCandidate && imageCandidate.getAttribute('src');
+      if (width  && height) {
+        return image.getAttribute('src');
       }
     }
   }
