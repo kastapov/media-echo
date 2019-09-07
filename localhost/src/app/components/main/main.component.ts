@@ -7,6 +7,8 @@ import {GoogleSearchService} from '../../services/google-search.service';
   styleUrls: ['./main.component.sass']
 })
 export class MainComponent implements OnInit {
+  
+  checbbox = [];
   query = '';
 
   constructor(private googleSearchService: GoogleSearchService) { }
@@ -16,6 +18,19 @@ export class MainComponent implements OnInit {
 
   searchImages() {
     this.googleSearchService.getImages(this.query);
+  }
+
+  filter(x) {
+    const index = this.checbbox.indexOf(x);
+    if (index >= 0) {
+      return this.checbbox.splice(index,1)
+    } else {
+      return this.checbbox.push(x)
+    }
+  }
+
+  send() {
+    
   }
 
 }

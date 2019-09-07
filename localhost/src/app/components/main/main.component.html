@@ -1,25 +1,27 @@
-<form id="form">
-  <h2>Check Credibility for:</h2>
-  <ul>
-    <li>
-      <input name="checkbox" type="checkbox" id="website" value="website">
-      <label for="website">Website</label>
-    </li>
-    <li>
-      <input name="checkbox" type="checkbox" id="image" value="image">
-      <label for="image">Image</label>
-    </li>
-    <li>
-      <input name="checkbox" type="checkbox" id="title" value="title">
-      <label for="title">Title</label>
-    </li>
-    <li>
-      <input name="checkbox" type="checkbox" id="twitter" value="twitter">
-      <label for="twitter">Twitter</label>
-    </li>
-  </ul>
-</form>
-<button id="btn-main" type="submit" class="btn-main">Seek the truth</button>
-<main>
-  
-</main>
+<div class="container">
+  <form id="form">
+    <h2>Check Credibility for:</h2>
+    <ul>
+      <li (click)="filter('website')">
+        <input type="checkbox" id="website">
+        <label for="website">Website</label>
+      </li>
+      <li (click)="filter('image')">
+        <input type="checkbox" id="image">
+        <label for="image">Image</label>
+      </li>
+      <li (click)="filter('title')">
+        <input type="checkbox" id="title">
+        <label for="title">Title</label>
+      </li>
+      <li (click)="filter('twitter')">
+        <input type="checkbox" id="twitter">
+        <label for="twitter">Twitter</label>
+      </li>
+    </ul>
+    <button id="btn-main" (click)=send() class="btn-main">Seek the truth</button>
+  </form>
+  <main>
+    
+  </main>
+</div>
