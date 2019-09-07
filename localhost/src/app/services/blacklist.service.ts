@@ -8,14 +8,14 @@ export class BlacklistService {
 
   constructor() { }
 
-  checkDomain(url) {
+  public checkDomain(url) {
     const domain = this.getDomain(url);
     return blacklist.find(d => d.name === domain);
   }
 
 
 
-  getDomain(url, subdomain = false) {
+  private getDomain(url, subdomain = false) {
     url = url.replace(/(https?:\/\/)?(www.)?/i, '');
 
     if (!subdomain) {
