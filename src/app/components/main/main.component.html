@@ -1,0 +1,6 @@
+<input type="text" [(ngModel)]="query">
+
+<button (click)="searchImages()">Search images</button>
+<div  *ngFor="let image of googleSearchService.images" >
+  <img [src]="image.link" width="150px"/>
+</div>
