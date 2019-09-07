@@ -20,7 +20,7 @@ export class MainComponent implements OnInit {
     twitter: null,
   };
   articles: Array<ArticleItem> = [];
-  percentage = [91, 87, 73, 60, 58, 55, 41, 40];
+  percentage = [89, 76, 68, 61, 54, 41, 31, 18];
 
   constructor(
     private googleSearchService: GoogleSearchService,
@@ -29,10 +29,7 @@ export class MainComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const urlParams = new URLSearchParams(window.location.search);
-    if (this.blackListService.checkDomainBlacklisted(urlParams.get('url'))) {
-      this.warning = true;
-    }
+
   }
 
   searchImages(x) {
