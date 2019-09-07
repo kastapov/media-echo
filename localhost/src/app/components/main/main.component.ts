@@ -10,10 +10,11 @@ import {PageExtractorService} from '../../services/page-extractor.service';
 })
 export class MainComponent implements OnInit {
   dates = [
-    '23.2.2019', '1.6.2019', '14.3.2019', '9.8.2019', '10.8.2019', '3.5.2019', '26.4.2019', '8.9.2019', '29.5.2019'
-  ];
+    '23.2.2019','1.6.2019','14.3.2019','9.8.2019','10.8.2019','3.5.2019','26.4.2019','8.9.2019','29.5.2019'
+  ]
   warning = false;
   open = true;
+  checbbox = ['content','title','image'];
   query = '';
   checkImage = true;
   checkTitle = true;
@@ -30,6 +31,10 @@ export class MainComponent implements OnInit {
 
   }
 
+  searchImages(x) {
+    this.googleSearchService.getImages(x);
+  }
+
   seek() {
     this.open = false;
     this.pageExtractorService.processCrawl().then(() => {
@@ -39,9 +44,9 @@ export class MainComponent implements OnInit {
     });
   }
 
-  randomDate() {
-    const random = Math.floor(Math.random() * 8);
-    return this.dates[random];
+  randomDate() { 
+    const number = Math.floor(Math.random() * 8); 
+    return this.dates[number]
   }
 }
 

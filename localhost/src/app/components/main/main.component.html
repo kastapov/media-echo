@@ -44,14 +44,13 @@
       <ul>
         <li *ngFor="let article of googleSearchService.articles; let i = index">
           <div class="left">
-            <img onerror="this.src='http://beerblackbook.com/img/defaultlg.png'" src="{{ article.pagemap && article.pagemap.cse_image && article.pagemap.cse_image.length && article.pagemap.cse_image[0].src || 'https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?v=1530129081' }}" alt="img">
+            <img onerror="this.src='https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?v=1530129081s'" src="{{ article.pagemap && article.pagemap.cse_image && article.pagemap.cse_image.length && article.pagemap.cse_image[0].src || 'https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?v=1530129081' }}" alt="img">
             <div>
               <a href="{{ article.link }}">{{ article.title }}</a>
             </div>
             <img class="graph" src="assets/{{percentage[i]}}.png" alt="neco">
           </div>
           <div class="meta-data">
-            <span>{{ randomDate() }}</span>
             <span>{{ article.displayLink }}</span>
           </div>
           <div></div>
@@ -63,15 +62,13 @@
       <ul>
         <li *ngFor="let image of googleSearchService.images; let i = index">
           <div class="left">
-            <img src="{{ image.link }}" alt="neco">
+            <img onerror="this.src='https://cdn.shopify.com/s/files/1/0533/2089/files/placeholder-images-image_large.png?v=1530129081s'" src="{{ image.link }}" alt="neco">
             <div>
               <a href="{{ image.link }}">{{ image.title }}</a>
             </div>
             <img class="graph" src="assets/{{percentage[i]}}.png" alt="neco">
           </div>
           <div class="meta-data">
-            <span>12.8.2019</span>
-            <span>Johny white</span>
             <span>{{ image.displayLink }}</span>
           </div>
           <div></div>

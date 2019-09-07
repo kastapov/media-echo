@@ -11,6 +11,14 @@ export const blacklist = [{
   name: 'svetkolemnas.info',
   banned: '07.09.2019'
 }, {
+}, {
+  name: 'cz.sputniknews',
+  banned: '07.09.2019'
+}, {
+}, {
+  name: 'time-for-investment',
+  banned: '07.09.2019'
+}, {
   name: 'zvedavec.org',
   banned: '07.09.2019'
 }];
