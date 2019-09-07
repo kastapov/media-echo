@@ -1,29 +1,60 @@
 <div class="container">
+  <div *ngIf="warning" class="warning">
+    <h2>WARNING!!! This article is on blacklist</h2>
+  </div>
+  <div class="startOn inline" (click)="startOn = !startOn">
+    <p>Media echo</p>
+    <div *ngIf="startOn" class="inline">
+      <img src="assets/toggle-on.png" alt="">
+      <p>On</p>
+    </div>
+    <div *ngIf="!startOn" class="inline">
+      <img src="assets/toggle-off.png" alt="">
+      <p>Off</p>
+    </div>
+  </div>
   <form id="form" *ngIf="open">
     <h2>Check Credibility for:</h2>
     <ul>
-      <li (click)="filter('website')">
-        <input type="checkbox" id="website" [checked]="includes('website')">
-        <label for="website">Website</label>
+      <p>Website</p>
+      <li (click)="filter('image')">
+        <input type="checkbox" id="title" [checked]="includes('image')">
+        <label for="title">Image</label>
       </li>
       <li (click)="filter('title')">
         <input type="checkbox" id="title" [checked]="includes('title')">
         <label for="title">Title</label>
       </li>
-      <li (click)="filter('twitter')">
-        <input type="checkbox" id="twitter" [checked]="includes('twitter')">
-        <label for="twitter">Twitter</label>
+      <li (click)="filter('content')">
+        <input type="checkbox" id="title" [checked]="includes('content')">
+        <label for="title">Content Text</label>
+      </li>
+      <p>Social</p>
+      <li (click)="filter('Twitter')">
+        <input type="checkbox" id="title" [checked]="includes('Twitter')">
+        <label for="title">Twitter</label>
       </li>
     </ul>
     <button id="btn-main" (click)=send() class="btn-main">Seek the truth</button>
   </form>
   <main>
     <section *ngIf="data.website" class="website">
-      <h3>Website check</h3>
-      <div class="chart">
-        <span [ngStyle]="{ 'width': data.website.percent }"></span>
-        <p>{{ data.website.percent }}</p>
-      </div>
+      <h2>Website check</h2>
+      <ul>
+        <li *ngFor="let article of data.website.articles">
+          <div class="left">
+            <img src="{{ article.image }}" alt="neco">
+            <div>
+              <a href="{{ article.link }}">{{ article.title }}</a>
+              <p>{{ article.displayLink }}</p>
+            </div>
+          </div>
+          <!-- <div class="chart">
+            <span [ngStyle]="{ 'width': data.website.percent }"></span>
+            <p>{{ data.website.percent }}</p>
+          </div> -->
+        </li>
+      </ul>
     </section>
   </main>
 </div>

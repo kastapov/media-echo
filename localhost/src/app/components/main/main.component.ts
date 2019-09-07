@@ -8,10 +8,11 @@ import { BlacklistService } from 'src/app/services/blacklist.service';
   styleUrls: ['./main.component.sass']
 })
 export class MainComponent implements OnInit {
-  
+  warning = false;
   open = true;
   checbbox = [];
   query = '';
+  startOn = true;
   data = {
     website: null,
     title: null,
@@ -20,14 +21,25 @@ export class MainComponent implements OnInit {
 
   constructor(
     private googleSearchService: GoogleSearchService,
-    private blackListService: BlacklistService
+    private blackListService: BlacklistService,
   ) { }
 
   ngOnInit() {
-    this.data.website  = {
-      percent: '90%'
+    const urlParams = new URLSearchParams(window.location.search);
+    if (this.blackListService.checkDomain(urlParams.get('url'))) {
+      this.warning = true;
     }
-    this.blackListService.checkDomain()
+    this.data.website  = {
+      percent: '90%',
+      articles: [
+        {
+          title: 'necosdsadadasdd asd asdad asd ads',
+          link: 'sadsadsadasdasdsadasddsaasdd',
+          image: 'https://static01.nyt.com/images/2019/09/07/world/06hkecon1-print/merlin_159784731_ac63cf91-d398-4bc5-9718-2d00178aa902-articleLarge.jpg?quality=75&auto=webp&disable=upscale',
+          displayLink: 'adsadadsda'
+        }
+      ]
+    }
   }
 
   searchImages(x) {
