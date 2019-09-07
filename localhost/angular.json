@@ -67,7 +67,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "media-echo:build"
+            "browserTarget": "media-echo:build",
+            "disableHostCheck": true
           },
           "configurations": {
             "production": {
